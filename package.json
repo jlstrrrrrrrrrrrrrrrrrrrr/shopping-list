@@ -38,6 +38,7 @@
     "@types/node": "22.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "19.0.2",
+    "eslint": "^9.22.0",
     "postcss": "8.4.49",
     "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
