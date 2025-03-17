@@ -6,22 +6,33 @@ import MobileMenu from '@/components/menu/mobile-menu';
 import Header from '@/components/header';
 import { ShoppingListProvider } from '@/context/shopping-list-context';
 import { Toaster } from 'sonner';
+import type { Viewport } from 'next';
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3000';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false
+  // themeColor: []
+};
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: 'CartCrew - Collaborative Shopping Lists',
   description:
     'Create, share, and manage shopping lists with family and friends. Keep track of items, assign tasks, and collaborate in real-time with CartCrew - the smart way to organize your shopping.',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: 'no'
-  }
+  keywords: [
+    'shopping list',
+    'collaborative shopping',
+    'grocery list',
+    'shared lists',
+    'family shopping',
+    'task management'
+  ]
 };
 
 const geistSans = Geist({
@@ -36,9 +47,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
