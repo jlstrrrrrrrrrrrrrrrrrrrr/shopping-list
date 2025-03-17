@@ -13,8 +13,15 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: 'Next.js and Supabase Starter Kit',
-  description: 'The fastest way to build apps with Next.js and Supabase'
+  title: 'CartCrew - Collaborative Shopping Lists',
+  description:
+    'Create, share, and manage shopping lists with family and friends. Keep track of items, assign tasks, and collaborate in real-time with CartCrew - the smart way to organize your shopping.',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: 'no'
+  }
 };
 
 const geistSans = Geist({
@@ -29,6 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
