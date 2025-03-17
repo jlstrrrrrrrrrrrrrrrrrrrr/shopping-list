@@ -1,5 +1,6 @@
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+import { createClient as createServerAdminClient } from '@supabase/supabase-js';
 
 export const createClient = async () => {
   const cookieStore = await cookies();
@@ -22,8 +23,20 @@ export const createClient = async () => {
             // This can be ignored if you have middleware refreshing
             // user sessions.
           }
-        },
-      },
-    },
+        }
+      }
+    }
+  );
+};
+
+export const createAdminClient = () => {
+  return createServerAdminClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_KEY!, // Must use the service key (RLS)
+    {
+      global: {
+        headers: {}
+      }
+    }
   );
 };

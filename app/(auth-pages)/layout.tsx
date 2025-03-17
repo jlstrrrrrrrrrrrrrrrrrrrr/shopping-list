@@ -1,9 +1,9 @@
+import { PageContainer } from '@/components/page-container';
+
 export default async function Layout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="max-w-7xl flex flex-col gap-12 items-start">{children}</div>
-  );
+  return <PageContainer>{children}</PageContainer>;
 }
