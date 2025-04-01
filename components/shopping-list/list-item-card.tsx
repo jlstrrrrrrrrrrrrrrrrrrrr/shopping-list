@@ -18,6 +18,7 @@ interface ListCardProps {
   item: ListItem;
   onDelete: () => void;
   onUpdateStatus: (status: ListItemStatus) => void;
+  isLoading: boolean;
 }
 
 const mockComments = [
@@ -53,7 +54,8 @@ const mockComments = [
 const ListItemCard: React.FC<ListCardProps> = ({
   item,
   onDelete,
-  onUpdateStatus
+  onUpdateStatus,
+  isLoading
 }) => {
   const { user } = useAuthContext();
   const [isCompleted, setIsCompleted] = useState(
@@ -143,6 +145,7 @@ const ListItemCard: React.FC<ListCardProps> = ({
                 size="sm"
                 className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive"
                 onClick={onDelete}
+                disabled={isLoading}
               >
                 <Trash className="h-4 w-4" />
               </Button>

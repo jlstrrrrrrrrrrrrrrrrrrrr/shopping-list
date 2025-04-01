@@ -12,6 +12,11 @@ import { createAdminClient } from '@/utils/supabase/server';
 import { getAuthenticatedUser } from '@/utils/auth-utils';
 import { nanoid } from 'nanoid';
 
+type RefreshTokenResponse = {
+  inviteToken?: string;
+  error?: string;
+};
+
 /**
  * Handles POST requests for refreshing invite tokens
  *
@@ -25,7 +30,9 @@ import { nanoid } from 'nanoid';
  *
  * @security Only list owners can refresh tokens
  */
-export async function POST(req: NextRequest) {
+export async function POST(
+  req: NextRequest
+): Promise<NextResponse<RefreshTokenResponse>> {
   try {
     // Get authenticated user from the request
     const { user, error: authError } = await getAuthenticatedUser(req);

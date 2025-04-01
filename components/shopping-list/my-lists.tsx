@@ -68,6 +68,7 @@ const MyLists: React.FC<MyListsProps> = ({}) => {
                 item={item}
                 onDelete={() => deleteItem(item.id)}
                 onUpdateStatus={() => {}}
+                isLoading={isUseListItemsLoading}
               />
             ))}
           </div>
